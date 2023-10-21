@@ -56,6 +56,8 @@ public class EmployeeMySqlDao {
 
 **Fix**: Introduce an ``IEmployeeDao`` interface. All database-specific DAO classes will implement this interface. This way, they're open for extension (supporting more databases) but closed for modification (no need to change existing code when adding support for a new database).
 
+---
+
 **Problem 2**: While the base class provides a generic ``executeQuery`` method, subclasses introduce their own database-specific query execution methods, such as ``executeMySqlQuery`` and ``executeOracleQuery``. This creates inconsistencies in method naming and usage. Ìf we want to support more databases in the future, this approach introduces new database-specific methods in every new subclass, rather than leveraging and overriding the methods from the base class.
 
 ```java
